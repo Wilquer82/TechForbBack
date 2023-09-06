@@ -47,10 +47,8 @@ exports.loginUser = async (req, res) => {
 
 exports.getBalance = async (req, res) => {
   const user = req.params.user;
-  console.log(req.params.user)
   try {
     const balance = await User.getBalance(user);
-    console.log(balance)
     return res.json({ balance });
   } catch (err) {
     throw(err)
@@ -62,13 +60,10 @@ exports.pathBalance = async (req, res) => {
   const value = req.body.newBalance;
   try {
     const balance = await User.getBalance(user);
-    console.log(balance, 'antigo CONTROLLER');
     const newBalance = (balance) + (value);
-    console.log(newBalance, 'novo CONTROLLER');
     await User.updateBalance({ user:  user }, { balance:  newBalance });
     res.status(200).json({ message: 'Saldo atualizado com sucesso!' });
   } catch (error) {
-    // Enviar resposta de erro
     console.log(error);
     res.status(500).json({ message: 'Ocorreu um erro ao atualizar o saldo.' });
   }

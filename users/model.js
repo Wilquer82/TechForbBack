@@ -33,8 +33,6 @@ const getBalance = async (user) => {
 
 const updateBalance = async (user, newBalance) => {
   const db = await connection();
-  console.log(user, "USER");
-  console.log(newBalance, 'NEW');
   const newValue = newBalance.balance;
     try {
       const result = await db.collection('Login').updateOne({ user: user.user }, { $set: { balance: newValue } })
