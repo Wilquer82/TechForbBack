@@ -27,7 +27,7 @@ const getBalance = async (user) => {
   if (data) {
     return data.balance;
   } else {
-    return "Erro";  
+    return "Errors";
   }
 }
 
